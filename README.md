@@ -1,46 +1,31 @@
-# Neri's Loom v2
+# Neri's Loom
 
-Current architecture:
+This version is intentionally FLAT so it can be uploaded to GitHub file-by-file.
 
-- Home
-- Expertise
-- Experience
-- Insights
-- Contact
-- External redirect to Lab & Lore
+Upload every file in this folder directly to the root of the `nerisloom` repository.
 
-## Expertise taxonomy
+Required files:
+- index.html
+- expertise.html
+- experience.html
+- insights.html
+- contact.html
+- style.css
+- main.js
+- insight-01.html
+- insight-02.html
+- insight-03.html
+- README.md
 
-1. Brand Marketing
-2. Lifecycle Marketing
-3. Content Marketing
-4. Channel Strategy
-5. Content Development & Strategy
-6. Campaign Development
-7. Public Relations & Events
-8. Influencer & Affiliate Marketing
-9. Partnerships & Collaboration
-10. Asset Development
-11. SOP Writing
-12. SEO / AEO / GEO Marketing & Strategy
+Do not create subfolders for this version.
 
-## Insights model
+After all files are uploaded, GitHub Pages can be enabled from:
+Settings -> Pages -> Deploy from a branch -> main -> /(root)
 
-Each Insight uses:
-Context -> Problem -> What I observed -> What I did -> Why I chose that approach -> What happened -> What this taught me -> How I would apply it elsewhere
-
-## Before publishing
-
-Replace:
-- hello@example.com
-- LinkedIn placeholder
-- resume download placeholder
-- experience placeholders
-- professional profile copy
-- image placeholders
-- sample insights with your real-world work
-
-Lab & Lore is currently linked to:
-https://labandlorebyneri.github.io/
-
-Update that URL if your renamed GitHub account changed the live address.
+Important placeholders still to replace later:
+- professional email
+- LinkedIn
+- resume download
+- real experience
+- real insight content
+- final Lab & Lore URL if it changes
