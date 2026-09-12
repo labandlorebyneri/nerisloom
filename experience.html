@@ -10,6 +10,84 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+
+<style>
+  .experience-role-intro{
+    max-width:880px;
+    margin:0 0 28px;
+  }
+
+  .experience-block{
+    max-width:900px;
+    margin-top:30px;
+  }
+
+  .experience-block h3{
+    margin:0 0 10px;
+    font-family:"DM Sans",sans-serif;
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+
+  .experience-block ul{
+    margin:0;
+  }
+
+  .experience-block li + li{
+    margin-top:8px;
+  }
+
+  .expertise-applied{
+    margin-top:34px;
+  }
+
+  .expertise-applied .eyebrow{
+    margin-bottom:12px;
+  }
+
+  .tags{
+    max-width:980px;
+  }
+
+  @media(max-width:740px){
+    .experience-block{
+      margin-top:24px;
+    }
+  }
+</style>
+
+
+<style>
+  .experience-intro .experience-dynamic-word{
+    display:inline-block;
+    min-width:4.2ch;
+    color:var(--blue);
+    transition:opacity .22s ease, transform .22s ease;
+  }
+
+  .experience-intro .experience-dynamic-word.is-changing{
+    opacity:0;
+    transform:translateY(.12em);
+  }
+
+  .experience-intro .experience-subheading{
+    margin:18px 0 0;
+    font-family:"DM Sans",sans-serif;
+    font-size:clamp(1.15rem,2vw,1.6rem);
+    line-height:1.25;
+    font-weight:700;
+    letter-spacing:-.02em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .experience-intro .experience-dynamic-word{
+      transition:none;
+    }
+  }
+</style>
+
 </head>
 <body>
 <header class="site-header">
@@ -25,37 +103,286 @@
 </header>
 
 <main class="page-shell">
-  <section class="page-intro">
+  <section class="page-intro experience-intro">
     <p class="eyebrow">02 / Experience</p>
-    <h1>Where I have applied the work.</h1>
+    <h1>
+      I’m in the <span class="experience-dynamic-word" id="experience-word">Loom</span> where it happens.
+    </h1>
+    <h2 class="experience-subheading">Where I have applied the work.</h2>
     <p class="lead">
-      A resume-style chronology of roles, responsibilities, achievements, education, training, and recognition.
+      A record of roles where strategy, content, search, creative execution, partnerships, and operations translated into measurable work.
     </p>
   </section>
 
   <section class="timeline">
     <article class="timeline-entry">
-      <div class="timeline-date">20XX to Present</div>
+      <div class="timeline-date">February 2025–Present</div>
+
       <div class="timeline-body">
-        <p class="eyebrow">Organization / Company</p>
-        <h2>Current or Most Recent Role</h2>
-        <p>Replace with the scope of your role, the audiences you served, and the type of marketing work you led or supported.</p>
-        <ul>
-          <li>Add an achievement with measurable or observable impact.</li>
-          <li>Add a major responsibility tied to your expertise.</li>
-          <li>Add a collaboration, campaign, or operational contribution.</li>
-        </ul>
-        <p class="tags"><span>Brand Marketing</span><span>Campaign Development</span><span>Channel Strategy</span></p>
+        <p class="eyebrow">Chris Corzo Injury Attorneys · Louisiana, USA</p>
+        <h2>Organic Growth and Creative Strategist</h2>
+
+        <p class="experience-role-intro">
+          Lead organic growth and creative strategy for a Louisiana personal injury law firm, spanning search, content, lifecycle communications, CRM, conversion, public relations, events, and marketing operations.
+        </p>
+
+        <div class="experience-block">
+          <h3>Campaign Strategy &amp; Development</h3>
+          <ul>
+            <li>Lead integrated marketing campaigns across South Louisiana, aligning creative execution, channel strategy, and business objectives to strengthen brand visibility and client outreach.</li>
+            <li>Integrate SEO and SEM into campaign planning through keyword targeting, competitive analysis, and performance tracking to improve discoverability and inform optimization.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Search Optimization &amp; Thought Leadership</h3>
+          <ul>
+            <li>Research legal topics and develop SEO-, SEM-, AEO-, and GEO-informed articles designed to expand digital visibility and reinforce subject-matter authority.</li>
+            <li>Execute keyword research, on-page optimization, backlink strategy, technical SEO audits, and analytics reviews to strengthen search performance and refine content priorities.</li>
+            <li>Monitor search performance and algorithm changes to keep content strategy responsive to evolving search behavior and platform requirements.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Digital Content, Email &amp; SMS</h3>
+          <ul>
+            <li>Build and manage multi-channel editorial calendars across Facebook, Instagram, TikTok, LinkedIn, and X.</li>
+            <li>Execute email and SMS communications through Mailchimp, GoHighLevel, and Sakari to support awareness, engagement, client outreach, and community initiatives.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>CRM &amp; CRO Implementation</h3>
+          <ul>
+            <li>Design and optimize CRM workflows across LeadDocket, Neos, GoHighLevel, and CallRail to improve lead management, follow-up consistency, and conversion pathways.</li>
+            <li>Apply conversion rate optimization principles to reduce friction across digital user journeys and strengthen engagement and conversion opportunities.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Public Relations &amp; Events</h3>
+          <ul>
+            <li>Coordinate public relations initiatives and community events that strengthen local engagement while supporting road-safety advocacy and child-safety-first policies across Louisiana.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Operational Development</h3>
+          <ul>
+            <li>Develop marketing SOPs and contribute to the firm’s Business Intelligence function, helping standardize workflows and strengthen data-informed decision-making.</li>
+          </ul>
+        </div>
+
+        <div class="expertise-applied">
+          <p class="eyebrow">Expertise applied</p>
+          <p class="tags">
+            <span>Brand Marketing</span>
+            <span>Lifecycle Marketing</span>
+            <span>Email &amp; SMS Marketing</span>
+            <span>Content Marketing</span>
+            <span>Channel Strategy</span>
+            <span>Content Development &amp; Strategy</span>
+            <span>Campaign Development</span>
+            <span>Public Relations &amp; Events</span>
+            <span>Influencer &amp; Affiliate Marketing</span>
+            <span>Partnerships &amp; Collaboration</span>
+            <span>Asset Development, Graphic Design &amp; Video Editing</span>
+            <span>SOP Writing</span>
+            <span>SEO / AEO / GEO Marketing &amp; Strategy</span>
+          </p>
+        </div>
       </div>
     </article>
 
     <article class="timeline-entry">
-      <div class="timeline-date">20XX to 20XX</div>
+      <div class="timeline-date">August 2025–November 2025</div>
+
       <div class="timeline-body">
-        <p class="eyebrow">Organization / Company</p>
-        <h2>Previous Role</h2>
-        <p>Use the same structure for each significant role.</p>
-        <p class="tags"><span>Content Marketing</span><span>PR & Events</span><span>Partnerships</span></p>
+        <p class="eyebrow">Scale UP PH · Philippines</p>
+        <h2>Content Strategist <span style="font-size:.62em;font-weight:500;">(Contract)</span></h2>
+
+        <p class="experience-role-intro">
+          Joined on a project basis during the agency’s build stage to shape early content strategy, brand communication, and the foundations for future campaign and client work.
+        </p>
+
+        <div class="experience-block">
+          <h3>Content Strategy &amp; Agency Build Stage</h3>
+          <ul>
+            <li>Helped define the agency’s content direction, messaging structure, and strategic positioning during its formative stage.</li>
+            <li>Developed foundational content frameworks designed to support consistent brand communication, campaign planning, and future client-facing execution.</li>
+          </ul>
+        </div>
+
+        <div class="expertise-applied">
+          <p class="eyebrow">Expertise applied</p>
+          <p class="tags">
+            <span>Content Marketing</span>
+            <span>Content Development &amp; Strategy</span>
+            <span>Brand Marketing</span>
+            <span>Channel Strategy</span>
+            <span>Campaign Development</span>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="timeline-entry">
+      <div class="timeline-date">June 2022–December 2022</div>
+
+      <div class="timeline-body">
+        <p class="eyebrow">TikTok Lawyer Tony Roman</p>
+        <h2>Social Media Manager</h2>
+
+        <p class="experience-role-intro">
+          Managed social media strategy and creative production while supporting on-ground activations, project delivery, and operational systems.
+        </p>
+
+        <div class="experience-block">
+          <h3>Content Strategy &amp; Social Media</h3>
+          <ul>
+            <li>Led content strategy and production for digital campaigns and on-ground activities, contributing to a 35% increase in public engagement across social platforms.</li>
+            <li>Conceptualized and produced static and dynamic social assets that expanded online visibility and contributed to viral traction in regional campaigns.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Events &amp; Operational Support</h3>
+          <ul>
+            <li>Coordinated logistics for daily and special operations within and beyond Bataan, supporting smooth delivery of events with more than 100 attendees.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Project Implementation &amp; Systems</h3>
+          <ul>
+            <li>Oversaw project implementation and led development of an electronic database management system, improving data accessibility and reducing manual record retrieval time by 40%.</li>
+          </ul>
+        </div>
+
+        <div class="expertise-applied">
+          <p class="eyebrow">Expertise applied</p>
+          <p class="tags">
+            <span>Content Marketing</span>
+            <span>Content Development &amp; Strategy</span>
+            <span>Channel Strategy</span>
+            <span>Campaign Development</span>
+            <span>Public Relations &amp; Events</span>
+            <span>Asset Development, Graphic Design &amp; Video Editing</span>
+            <span>SOP Writing</span>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="timeline-entry">
+      <div class="timeline-date">June 2022–December 2022</div>
+
+      <div class="timeline-body">
+        <p class="eyebrow">The Bureau.PH · Makati City, Philippines</p>
+        <h2>Associate Account Manager</h2>
+
+        <p class="experience-role-intro">
+          Managed content strategy, creative development, performance analysis, public engagement, and account coordination across digital and on-ground campaigns.
+        </p>
+
+        <div class="experience-block">
+          <h3>Content Strategy &amp; Channel Management</h3>
+          <ul>
+            <li>Built and executed content strategies for client accounts on Facebook, TikTok, and Instagram, increasing follower engagement by 30% within six months.</li>
+            <li>Analyzed content performance and optimized channel execution, improving average reach by 25%.</li>
+            <li>Managed content calendars and cross-channel scheduling, maintaining brand consistency while reducing scheduling conflicts by 40%.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Content Development &amp; Research</h3>
+          <ul>
+            <li>Wrote short- and long-form content for social media and public-facing activations, supporting more than five successful digital and on-ground campaigns.</li>
+            <li>Researched ordinances, statutes, and related materials to ensure content accuracy, compliance, and alignment with civic messaging.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Public Relations, Events &amp; Collaboration</h3>
+          <ul>
+            <li>Led preparations for public engagements, invitations, and PR activities, coordinating events that drew more than 200 participants and expanded client visibility.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Creative Asset Development</h3>
+          <ul>
+            <li>Conceptualized and designed in-art copy, static visuals, and dynamic social content, increasing shareability and contributing to viral traction on TikTok.</li>
+          </ul>
+        </div>
+
+        <div class="expertise-applied">
+          <p class="eyebrow">Expertise applied</p>
+          <p class="tags">
+            <span>SEO</span>
+            <span>Brand Marketing</span>
+            <span>Content Marketing</span>
+            <span>Public Relations &amp; Events</span>
+            <span>Channel Strategy</span>
+            <span>Partnerships &amp; Collaboration</span>
+            <span>Influencer &amp; Affiliate Marketing</span>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="timeline-entry">
+      <div class="timeline-date">January 2022–May 2022</div>
+
+      <div class="timeline-body">
+        <p class="eyebrow">Mayoralty Campaign of Renato Matawaran · Project-based</p>
+        <h2>Project Manager</h2>
+
+        <p class="experience-role-intro">
+          Managed campaign research, messaging, marketing, public relations, partnerships, stakeholder coordination, and day-to-day project operations for a mayoralty campaign.
+        </p>
+
+        <div class="experience-block">
+          <h3>Constituent Research &amp; Campaign Messaging</h3>
+          <ul>
+            <li>Led constituent interviews and focus group discussions to surface advocacy priorities, translating findings into campaign messaging that improved voter resonance by 20%.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Marketing, PR &amp; Social Media</h3>
+          <ul>
+            <li>Planned and directed daily and monthly marketing, public relations, and social media activity for the slate, increasing online engagement by 40% and expanding reach to more than 50,000 constituents.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Partnerships &amp; Stakeholder Coordination</h3>
+          <ul>
+            <li>Built partnerships with suppliers, constituents, and political allies, securing resources and relationships that supported campaign operations across more than 10 regions.</li>
+            <li>Coordinated inter- and intra-agency requests and communications across offices and departments, reducing approval turnaround time by 30%.</li>
+          </ul>
+        </div>
+
+        <div class="experience-block">
+          <h3>Operations &amp; Project Support</h3>
+          <ul>
+            <li>Provided administrative and technical support across campaign operations, helping maintain smooth logistics and execution throughout the election period.</li>
+          </ul>
+        </div>
+
+        <div class="expertise-applied">
+          <p class="eyebrow">Expertise applied</p>
+          <p class="tags">
+            <span>Brand Marketing</span>
+            <span>Content Marketing</span>
+            <span>Channel Strategy</span>
+            <span>Campaign Development</span>
+            <span>Public Relations &amp; Events</span>
+            <span>Partnerships &amp; Collaboration</span>
+            <span>Content Development &amp; Strategy</span>
+          </p>
+        </div>
       </div>
     </article>
   </section>
@@ -64,19 +391,63 @@
     <article>
       <p class="eyebrow">Education</p>
       <h2>Education &amp; Training</h2>
-      <p>Degrees, certifications, professional development, and selected training.</p>
+
+      <div style="margin-top:24px;">
+        <h3>Bachelor of Arts in Psychology</h3>
+        <p>University of the Philippines Diliman · 2022</p>
+      </div>
+
+      <div style="margin-top:24px;">
+        <h3>Digital Marketing Professional Certificate</h3>
+        <p>Foundations of Digital Marketing and E-commerce · Google · 2024</p>
+      </div>
     </article>
+
     <article>
       <p class="eyebrow">Recognition</p>
       <h2>Awards &amp; Distinctions</h2>
-      <p>Relevant professional, academic, sector, or institutional recognition.</p>
+
+      <div style="margin-top:24px;">
+        <h3>AY Foundation National Discipline Award</h3>
+        <p>AY Foundation, Inc. · April 2018</p>
+      </div>
     </article>
   </section>
+
 </main>
 <footer class="site-footer">
   <p>© <span id="year"></span> The Loom Room.</p>
-  <p>Marketing strategy, communication, and applied problem solving.</p>
+  <p>Strategy, creative execution, and applied problem solving.</p>
 </footer>
+
+<script>
+  (() => {
+    const word = document.getElementById("experience-word");
+    if (!word) return;
+
+    const words = ["Loom", "Zoom", "Room"];
+    const reduceMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      word.textContent = "Loom";
+      return;
+    }
+
+    let index = 0;
+
+    window.setInterval(() => {
+      word.classList.add("is-changing");
+
+      window.setTimeout(() => {
+        index = (index + 1) % words.length;
+        word.textContent = words[index];
+        word.classList.remove("is-changing");
+      }, 220);
+    }, 2200);
+  })();
+</script>
+
 <script src="main.js"></script>
 
 </body>
