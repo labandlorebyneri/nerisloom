@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Contact | The Loom Room by Neri</title>
+  <title>Contact | The Loom Room</title>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Loom Room by Neri is a marketing strategy portfolio connecting expertise, experience, creative execution, and applied insights.">
+<meta name="description" content="The Loom Room is a marketing strategy portfolio connecting expertise, experience, creative execution, and applied insights.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#3155FF">
 
 
 <style>
@@ -61,10 +65,56 @@
   }
 </style>
 
+
+<style>
+  .site-header .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .site-header .brand-name{
+    font:inherit;
+    color:inherit;
+  }
+
+  .site-header .brand-author{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px 10px;
+    border-radius:6px;
+    background:var(--blue, #3155FF);
+    color:#fff;
+    font-family:"DM Sans",sans-serif;
+    font-size:.68rem;
+    font-weight:700;
+    line-height:1;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+
+  @media(max-width:620px){
+    .site-header .brand{
+      gap:7px;
+    }
+
+    .site-header .brand-author{
+      padding:5px 8px;
+      font-size:.61rem;
+    }
+  }
+</style>
+
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="index.html">The Loom Room by Neri</a>
+  <a class="brand" href="index.html" aria-label="The Loom Room by Neri">
+    <span class="brand-name">The Loom Room</span>
+    <span class="brand-author">by Neri</span>
+  </a>
   <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
   <nav class="site-nav">
     <a href="expertise.html">Expertise</a>
@@ -96,7 +146,7 @@
 </main>
 <footer class="site-footer">
   <p>© <span id="year"></span> The Loom Room by Neri.</p>
-  <p>Strategy, creative execution, and applied problem solving.</p>
+  <p>Marketing strategy, creative execution, and applied problem solving.</p>
 </footer>
 <script src="main.js"></script>
 
