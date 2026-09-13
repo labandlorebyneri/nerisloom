@@ -5,288 +5,477 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>404 | The Loom Room by Neri</title>
-  <meta name="description" content="This page could not be found. Return to The Loom Room by Neri, browse Insights, or explore Expertise.">
-  <meta name="robots" content="noindex,follow">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#3155FF">
+
+  <link rel="icon" type="image/png" href="/theloomroom/favicon.png">
+  <link rel="apple-touch-icon" href="/theloomroom/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <meta name="theme-color" content="#3155FF">
-
   <style>
-    .site-header .brand{
+    :root{
+      --cream:#FBF6EE;
+      --paper:#FFFDF8;
+      --ink:#171820;
+      --muted:#67707E;
+      --line:#1E1F25;
+      --blue:#3155FF;
+      --pink:#FF3D8D;
+      --coral:#FF665A;
+      --mint:#78DEC5;
+      --yellow:#FFC83D;
+      --max:1380px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      background:var(--cream);
+      color:var(--ink);
+      font-family:"DM Sans",sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+
+    .site-header{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      border-bottom:1px solid rgba(23,24,32,.16);
+    }
+
+    .brand{
       display:inline-flex;
       align-items:center;
-      gap:10px;
+      gap:9px;
       text-decoration:none;
-      white-space:nowrap;
+      font-family:"Playfair Display",serif;
+      font-weight:700;
+      font-size:1.22rem;
+      line-height:1;
     }
 
-    .site-header .brand-name{
-      font:inherit;
-      color:inherit;
-    }
-
-    .site-header .brand-author{
+    .brand-author{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:6px 10px;
+      padding:6px 9px;
       border-radius:6px;
-      background:var(--blue, #3155FF);
+      background:var(--blue);
       color:#fff;
       font-family:"DM Sans",sans-serif;
-      font-size:.68rem;
+      font-size:.66rem;
       font-weight:700;
-      line-height:1;
-      letter-spacing:.02em;
+      letter-spacing:.01em;
+    }
+
+    .site-nav{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .site-nav a{
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible{
+      color:var(--blue);
+    }
+
+    main{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+      padding:54px 0 34px;
+    }
+
+    .error-shell{
+      position:relative;
+      min-height:650px;
+      display:grid;
+      grid-template-columns:minmax(0, 1.02fr) minmax(440px, .98fr);
+      gap:56px;
+      align-items:center;
+    }
+
+    .copy{
+      position:relative;
+      z-index:3;
+      max-width:760px;
+    }
+
+    .eyebrow{
+      margin:0 0 22px;
+      color:var(--blue);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0;
+      max-width:780px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(4.5rem, 8vw, 8.7rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+    }
+
+    h1 .accent{
+      color:var(--blue);
       white-space:nowrap;
     }
 
-    .error-page{
-      position:relative;
-      overflow:hidden;
-      min-height:72vh;
-      display:grid;
-      align-items:center;
-      padding:90px 6vw 110px;
-      background:var(--cream, #FFF9F2);
-      isolation:isolate;
-    }
-
-    .error-page::before{
-      content:"";
-      position:absolute;
-      width:340px;
-      height:340px;
-      border:42px solid var(--pink, #F43F8C);
-      border-radius:50%;
-      top:40px;
-      right:-110px;
-      z-index:-1;
-      opacity:.96;
-    }
-
-    .error-page::after{
-      content:"";
-      position:absolute;
-      width:280px;
-      height:30px;
-      background:var(--coral, #FF6B5E);
-      transform:rotate(-28deg);
-      left:-80px;
-      bottom:80px;
-      z-index:-1;
-    }
-
-    .error-inner{
-      max-width:1040px;
-      margin:0 auto;
-      width:100%;
-      position:relative;
-    }
-
-    .error-kicker{
-      margin:0 0 18px;
-      font-family:"DM Sans",sans-serif;
-      font-size:.8rem;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--blue, #3155FF);
-    }
-
-    .error-code{
-      margin:0 0 12px;
-      font-family:"DM Sans",sans-serif;
-      font-size:clamp(1rem, 1.4vw, 1.2rem);
-      font-weight:700;
-      color:var(--slate, #6E7C87);
-    }
-
-    .error-title{
-      margin:0;
-      max-width:880px;
-      font-family:"Playfair Display",serif;
-      font-size:clamp(4rem, 10vw, 9rem);
-      line-height:.9;
-      letter-spacing:-.05em;
-      color:var(--ink, #17171C);
-    }
-
-    .error-title .blue{
-      color:var(--blue, #3155FF);
-    }
-
-    .error-copy{
-      max-width:690px;
-      margin:28px 0 0;
-      font-family:"DM Sans",sans-serif;
-      font-size:clamp(1rem, 1.8vw, 1.25rem);
+    .lead{
+      max-width:650px;
+      margin:34px 0 0;
+      color:var(--muted);
+      font-size:clamp(1rem, 1.45vw, 1.28rem);
       line-height:1.65;
-      color:var(--slate, #6E7C87);
     }
 
-    .error-actions{
+    .actions{
+      margin-top:34px;
       display:flex;
       flex-wrap:wrap;
-      gap:14px;
-      margin-top:34px;
+      gap:12px;
     }
 
-    .error-actions a{
+    .button{
+      min-height:52px;
+      padding:0 19px;
+      border:1.5px solid var(--line);
+      border-radius:12px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:48px;
-      padding:12px 18px;
-      border-radius:8px;
-      font-family:"DM Sans",sans-serif;
-      font-weight:700;
       text-decoration:none;
-      transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+      font-weight:700;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
 
-    .error-actions a:hover{
+    .button:hover,
+    .button:focus-visible{
       transform:translateY(-2px);
+      box-shadow:0 7px 0 rgba(23,24,32,.10);
     }
 
-    .error-actions .primary{
-      background:var(--blue, #3155FF);
-      border:1px solid var(--blue, #3155FF);
+    .button-primary{
+      background:var(--blue);
       color:#fff;
+      border-color:var(--blue);
     }
 
-    .error-actions .secondary{
+    .button-secondary{
       background:transparent;
-      border:1px solid var(--ink, #17171C);
-      color:var(--ink, #17171C);
     }
 
-    .error-actions .secondary:hover{
-      border-color:var(--blue, #3155FF);
-      color:var(--blue, #3155FF);
+    .visual{
+      position:relative;
+      height:560px;
+      min-width:0;
     }
 
-    .thread-mark{
+    .weave-frame{
       position:absolute;
-      right:16%;
-      bottom:5%;
-      width:120px;
-      height:120px;
-      pointer-events:none;
+      inset:0;
+      border:1.5px solid rgba(23,24,32,.18);
+      border-radius:34px;
+      background:var(--paper);
+      overflow:hidden;
     }
 
-    .thread-mark::before,
-    .thread-mark::after{
-      content:"";
+    .code{
+      position:absolute;
+      top:28px;
+      right:32px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(4rem, 6vw, 6.4rem);
+      line-height:1;
+      color:rgba(23,24,32,.12);
+      letter-spacing:-.08em;
+      z-index:1;
+      user-select:none;
+    }
+
+    .thread{
       position:absolute;
       border-radius:999px;
+      transform-origin:center;
     }
 
-    .thread-mark::before{
-      width:92px;
-      height:18px;
-      background:var(--mint, #79E6C4);
+    .t1{
+      width:560px;
+      height:64px;
+      background:var(--pink);
+      top:120px;
+      left:-120px;
+      transform:rotate(13deg);
+    }
+
+    .t2{
+      width:510px;
+      height:64px;
+      background:var(--blue);
+      top:246px;
+      left:85px;
+      transform:rotate(-8deg);
+    }
+
+    .t3{
+      width:430px;
+      height:64px;
+      background:var(--mint);
+      top:360px;
+      left:-35px;
+      transform:rotate(17deg);
+    }
+
+    .t4{
+      width:390px;
+      height:64px;
+      background:var(--yellow);
+      top:430px;
+      right:-135px;
+      transform:rotate(-18deg);
+    }
+
+    .cut{
+      position:absolute;
+      width:116px;
+      height:88px;
+      background:var(--paper);
+      top:237px;
+      left:258px;
+      transform:rotate(-8deg);
+      z-index:5;
+      border-radius:18px;
+    }
+
+    .loose-end{
+      position:absolute;
+      width:138px;
+      height:64px;
+      top:256px;
+      right:8px;
+      background:var(--coral);
+      border-radius:999px;
       transform:rotate(38deg);
-      left:0;
-      top:42px;
+      z-index:6;
     }
 
-    .thread-mark::after{
-      width:24px;
-      height:24px;
-      background:var(--yellow, #FFD84D);
-      right:0;
-      top:0;
+    .dot{
+      position:absolute;
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      background:var(--yellow);
+      bottom:58px;
+      left:66px;
+      box-shadow:84px -44px 0 0 var(--pink), 178px 10px 0 -4px var(--blue);
+    }
+
+    .label{
+      position:absolute;
+      left:28px;
+      bottom:26px;
+      z-index:8;
+      padding:8px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,253,248,.92);
+      font-size:.74rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      backdrop-filter:blur(4px);
+    }
+
+    .footer{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+      padding:26px 0 34px;
+      border-top:1px solid rgba(23,24,32,.16);
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      color:var(--muted);
+      font-size:.84rem;
+    }
+
+    .footer p{margin:0}
+
+    @media(max-width:980px){
+      .site-header{
+        align-items:flex-start;
+        padding:22px 0;
+      }
+
+      .site-nav{
+        gap:14px;
+        justify-content:flex-end;
+      }
+
+      .error-shell{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+
+      .visual{
+        height:430px;
+      }
+
+      .copy{
+        max-width:850px;
+      }
+
+      h1{
+        font-size:clamp(4.2rem, 14vw, 7rem);
+      }
     }
 
     @media(max-width:720px){
-      .site-header .brand{
-        gap:7px;
+      .site-header,
+      main,
+      .footer{
+        width:min(100% - 28px, var(--max));
       }
 
-      .site-header .brand-author{
-        padding:5px 8px;
-        font-size:.61rem;
-      }
-
-      .error-page{
-        padding:72px 22px 90px;
-      }
-
-      .error-page::before{
-        width:230px;
-        height:230px;
-        border-width:30px;
-        right:-120px;
-        top:90px;
-      }
-
-      .thread-mark{
-        display:none;
-      }
-
-      .error-actions{
+      .site-header{
         flex-direction:column;
-        align-items:stretch;
+        gap:16px;
       }
 
-      .error-actions a{
+      .site-nav{
         width:100%;
+        justify-content:flex-start;
+        row-gap:10px;
+      }
+
+      .site-nav a{
+        font-size:.84rem;
+      }
+
+      main{
+        padding-top:38px;
+      }
+
+      .error-shell{
+        min-height:auto;
+      }
+
+      h1{
+        font-size:clamp(3.7rem, 17vw, 6.2rem);
+      }
+
+      .visual{
+        height:340px;
+      }
+
+      .weave-frame{
+        border-radius:24px;
+      }
+
+      .t1,.t2,.t3,.t4,.loose-end{
+        height:48px;
+      }
+
+      .t1{top:80px}
+      .t2{top:160px;left:20px}
+      .t3{top:235px}
+      .t4{top:275px}
+      .cut{
+        width:92px;
+        height:66px;
+        top:150px;
+        left:185px;
+      }
+      .loose-end{
+        top:170px;
+        right:-10px;
+      }
+
+      .footer{
+        flex-direction:column;
       }
     }
   </style>
 </head>
 
 <body>
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="The Loom Room by Neri">
-    <span class="brand-name">The Loom Room</span>
-    <span class="brand-author">by Neri</span>
-  </a>
+  <header class="site-header">
+    <a class="brand" href="/theloomroom/index.html" aria-label="The Loom Room by Neri">
+      <span>The Loom Room</span>
+      <span class="brand-author">by Neri</span>
+    </a>
 
-  <nav class="site-nav" aria-label="Primary navigation">
-    <a href="expertise.html">Expertise</a>
-    <a href="experience.html">Experience</a>
-    <a href="insights.html">Insights</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/theloomroom/expertise.html">Expertise</a>
+      <a href="/theloomroom/experience.html">Experience</a>
+      <a href="/theloomroom/insights.html">Insights</a>
+      <a href="/theloomroom/contact.html">Contact</a>
+    </nav>
+  </header>
 
-<main class="error-page">
-  <div class="error-inner">
-    <p class="error-kicker">404 / Loose Thread</p>
-    <p class="error-code">Page not found</p>
+  <main>
+    <section class="error-shell" aria-labelledby="error-title">
+      <div class="copy">
+        <p class="eyebrow">404 / Loose thread</p>
 
-    <h1 class="error-title">
-      This page slipped out of the <span class="blue">weave.</span>
-    </h1>
+        <h1 id="error-title">
+          This thread<br>
+          went <span class="accent">off-pattern.</span>
+        </h1>
 
-    <p class="error-copy">
-      The link may be outdated, moved, or still being woven. Head back to The Loom Room,
-      browse the latest Insights, or explore the work behind the strategy.
-    </p>
+        <p class="lead">
+          The page may have moved, been renamed, or slipped out of the weave.
+          Return to The Loom Room, browse the latest Insights, or find another way back into the work.
+        </p>
 
-    <div class="error-actions">
-      <a class="primary" href="index.html">Back to The Loom Room →</a>
-      <a class="secondary" href="insights.html">Browse Insights</a>
-      <a class="secondary" href="expertise.html">View Expertise</a>
-    </div>
+        <div class="actions">
+          <a class="button button-primary" href="/theloomroom/index.html">Back to The Loom Room →</a>
+          <a class="button button-secondary" href="/theloomroom/insights.html">Browse Insights</a>
+          <a class="button button-secondary" href="/theloomroom/expertise.html">View Expertise</a>
+        </div>
+      </div>
 
-    <div class="thread-mark" aria-hidden="true"></div>
-  </div>
-</main>
+      <div class="visual" aria-hidden="true">
+        <div class="weave-frame">
+          <div class="code">404</div>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> The Loom Room by Neri.</p>
-  <p>Marketing strategy, creative execution, and applied problem solving.</p>
-</footer>
+          <div class="thread t1"></div>
+          <div class="thread t2"></div>
+          <div class="cut"></div>
+          <div class="loose-end"></div>
+          <div class="thread t3"></div>
+          <div class="thread t4"></div>
 
-<script src="main.js"></script>
+          <div class="dot"></div>
+          <div class="label">broken weave / found route</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 The Loom Room by Neri.</p>
+    <p>Marketing strategy, creative execution, and applied problem solving.</p>
+  </footer>
 </body>
 </html>
