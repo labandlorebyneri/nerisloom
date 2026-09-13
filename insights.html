@@ -10,10 +10,124 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#3155FF">
+
+
+<style>
+  .site-header .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .site-header .brand-name{
+    font:inherit;
+    color:inherit;
+  }
+
+  .site-header .brand-author{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px 10px;
+    border-radius:6px;
+    background:var(--blue, #3155FF);
+    color:#fff;
+    font-family:"DM Sans",sans-serif;
+    font-size:.68rem;
+    font-weight:700;
+    line-height:1;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+
+  @media(max-width:620px){
+    .site-header .brand{
+      gap:7px;
+    }
+
+    .site-header .brand-author{
+      padding:5px 8px;
+      font-size:.61rem;
+    }
+  }
+</style>
+
+
+<style>
+  .insights-blue{
+    color:var(--blue, #3155FF);
+  }
+
+  .filter-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .insight-filter{
+    appearance:none;
+    border:1px solid var(--ink, #17171C);
+    border-radius:999px;
+    background:transparent;
+    color:var(--ink, #17171C);
+    padding:10px 18px;
+    font:inherit;
+    font-weight:700;
+    line-height:1;
+    cursor:pointer;
+    transition:background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+  }
+
+  .insight-filter:hover,
+  .insight-filter:focus-visible{
+    border-color:var(--blue, #3155FF);
+    color:var(--blue, #3155FF);
+  }
+
+  .insight-filter:focus-visible{
+    outline:3px solid rgba(49,85,255,.22);
+    outline-offset:3px;
+  }
+
+  .insight-filter.is-active{
+    background:var(--blue, #3155FF);
+    border-color:var(--blue, #3155FF);
+    color:#fff;
+  }
+
+  .insight-filter:active{
+    transform:translateY(1px);
+  }
+
+  .insight-card[hidden]{
+    display:none !important;
+  }
+
+  .insight-filter-empty{
+    margin:24px 0 0;
+    font-weight:600;
+    color:var(--slate, #6E7C87);
+  }
+
+  @media(max-width:640px){
+    .insight-filter{
+      padding:10px 14px;
+    }
+  }
+</style>
+
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="index.html">The Loom Room by Neri</a>
+  <a class="brand" href="index.html" aria-label="The Loom Room by Neri">
+    <span class="brand-name">The Loom Room</span>
+    <span class="brand-author">by Neri</span>
+  </a>
   <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
   <nav class="site-nav">
     <a href="expertise.html">Expertise</a>
@@ -27,41 +141,45 @@
 <main class="page-shell">
   <section class="page-intro">
     <p class="eyebrow">03 / Insights</p>
-    <h1>Real problems. Real solutions. Transferable lessons.</h1>
+    <h1>Real problems. <span class="insights-blue">Real solutions.</span> Transferable lessons.</h1>
     <p class="lead">
       These are not generic marketing articles. Each Insight begins with a real situation I worked on, then explains the reasoning, solution, outcome, and broader lesson.
     </p>
   </section>
 
-  <section class="filter-row" aria-label="Insight categories">
-    <span>All</span>
-    <span>Brand</span>
-    <span>Lifecycle</span>
-    <span>Content</span>
-    <span>Channels</span>
-    <span>Campaigns</span>
-    <span>PR &amp; Events</span>
-    <span>Influencer &amp; Affiliate</span>
-    <span>Partnerships</span>
-    <span>Creative</span>
-    <span>Operations</span>
-    <span>Search</span>
+  <section class="filter-row" aria-label="Filter insights by category">
+    <button type="button" class="insight-filter is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="insight-filter" data-filter="brand" aria-pressed="false">Brand</button>
+    <button type="button" class="insight-filter" data-filter="lifecycle" aria-pressed="false">Lifecycle</button>
+    <button type="button" class="insight-filter" data-filter="content" aria-pressed="false">Content</button>
+    <button type="button" class="insight-filter" data-filter="channels" aria-pressed="false">Channels</button>
+    <button type="button" class="insight-filter" data-filter="campaigns" aria-pressed="false">Campaigns</button>
+    <button type="button" class="insight-filter" data-filter="pr-events" aria-pressed="false">PR &amp; Events</button>
+    <button type="button" class="insight-filter" data-filter="influencer-affiliate" aria-pressed="false">Influencer &amp; Affiliate</button>
+    <button type="button" class="insight-filter" data-filter="partnerships" aria-pressed="false">Partnerships</button>
+    <button type="button" class="insight-filter" data-filter="creative" aria-pressed="false">Creative</button>
+    <button type="button" class="insight-filter" data-filter="operations" aria-pressed="false">Operations</button>
+    <button type="button" class="insight-filter" data-filter="search" aria-pressed="false">Search</button>
   </section>
 
+  <p class="insight-filter-empty" id="insight-filter-empty" hidden>
+    No published insights in this category yet.
+  </p>
+
   <section class="insights-grid">
-        <a class="insight-card" href="insights/insight-01.html">
+        <a class="insight-card" href="insights/insight-01.html" data-categories="brand campaigns">
       <div class="insight-meta"><span>Strategy</span><span>Insight 01</span></div>
       <h2>Why the problem matters more than the first idea</h2>
       <p>A framework for diagnosing the marketing problem before choosing the tactic.</p>
       <div class="insight-tags">Brand Marketing, Campaign Development</div>
       <strong>Read insight →</strong>
-    </a>    <a class="insight-card" href="insights/insight-02.html">
+    </a>    <a class="insight-card" href="insights/insight-02.html" data-categories="content channels">
       <div class="insight-meta"><span>Content</span><span>Insight 02</span></div>
       <h2>When more content is not the answer</h2>
       <p>A real-world lesson on fixing audience, message, and channel problems before increasing output.</p>
       <div class="insight-tags">Content Marketing, Channel Strategy</div>
       <strong>Read insight →</strong>
-    </a>    <a class="insight-card" href="insights/insight-03.html">
+    </a>    <a class="insight-card" href="insights/insight-03.html" data-categories="partnerships">
       <div class="insight-meta"><span>Collaboration</span><span>Insight 03</span></div>
       <h2>How to brief an external partner without losing the strategy</h2>
       <p>What effective vendor collaboration looks like when quality, timelines, and brand consistency all matter.</p>
@@ -72,8 +190,48 @@
 </main>
 <footer class="site-footer">
   <p>© <span id="year"></span> The Loom Room by Neri.</p>
-  <p>Marketing strategy, communication, and applied problem solving.</p>
+  <p>Marketing strategy, creative execution, and applied problem solving.</p>
 </footer>
+
+<script>
+  (() => {
+    const filters = [...document.querySelectorAll(".insight-filter")];
+    const cards = [...document.querySelectorAll(".insight-card")];
+    const emptyState = document.getElementById("insight-filter-empty");
+
+    if (!filters.length || !cards.length) return;
+
+    const applyFilter = (filter) => {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const categories = (card.dataset.categories || "").split(/\s+/).filter(Boolean);
+        const show = filter === "all" || categories.includes(filter);
+        card.hidden = !show;
+        if (show) visibleCount += 1;
+      });
+
+      filters.forEach((button) => {
+        const active = button.dataset.filter === filter;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      if (emptyState) {
+        emptyState.hidden = visibleCount !== 0;
+      }
+    };
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        applyFilter(button.dataset.filter || "all");
+      });
+    });
+
+    applyFilter("all");
+  })();
+</script>
+
 <script src="main.js"></script>
 
 </body>
