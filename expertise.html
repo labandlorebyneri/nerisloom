@@ -10,10 +10,60 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#3155FF">
+
+
+<style>
+  .site-header .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .site-header .brand-name{
+    font:inherit;
+    color:inherit;
+  }
+
+  .site-header .brand-author{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px 10px;
+    border-radius:6px;
+    background:var(--blue, #3155FF);
+    color:#fff;
+    font-family:"DM Sans",sans-serif;
+    font-size:.68rem;
+    font-weight:700;
+    line-height:1;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+
+  @media(max-width:620px){
+    .site-header .brand{
+      gap:7px;
+    }
+
+    .site-header .brand-author{
+      padding:5px 8px;
+      font-size:.61rem;
+    }
+  }
+</style>
+
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="index.html">The Loom Room by Neri</a>
+  <a class="brand" href="index.html" aria-label="The Loom Room by Neri">
+    <span class="brand-name">The Loom Room</span>
+    <span class="brand-author">by Neri</span>
+  </a>
   <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
   <nav class="site-nav">
     <a href="expertise.html">Expertise</a>
@@ -34,67 +84,163 @@
   </section>
 
   <section class="expertise-grid">
-        <article class="expertise-card blue-card">
+
+    <article class="expertise-card blue-card">
       <span>01</span>
       <h2>Brand Marketing</h2>
-      <p>Positioning, messaging, brand narrative, audience perception, differentiation, and brand consistency.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card coral-card">
-      <span>02</span>
-      <h2>Lifecycle Marketing</h2>
-      <p>Acquisition, onboarding, engagement, retention, reactivation, and customer journey thinking.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card forest-card">
-      <span>03</span>
-      <h2>Content Marketing</h2>
-      <p>Using content to attract, educate, nurture, convert, and retain audiences.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card yellow-card">
-      <span>04</span>
-      <h2>Channel Strategy</h2>
-      <p>Choosing and coordinating channels based on audience behavior, objectives, and context.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card navy-card">
-      <span>05</span>
-      <h2>Content Development & Strategy</h2>
-      <p>Editorial systems, content architecture, voice, formats, messaging frameworks, and production planning.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card mint-card">
-      <span>06</span>
-      <h2>Campaign Development</h2>
-      <p>Campaign architecture from problem definition through creative development, execution, and measurement.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card pink-card">
-      <span>07</span>
-      <h2>Public Relations & Events</h2>
-      <p>Public-facing communications, media relations, stakeholder engagement, event strategy, and activation.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card slate-card">
-      <span>08</span>
-      <h2>Influencer & Affiliate Marketing</h2>
-      <p>Creator and partner selection, briefs, relationship management, incentives, and attribution.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card blue-card">
-      <span>09</span>
-      <h2>Partnerships & Collaboration</h2>
-      <p>Working with third-party vendors, agencies, creators, suppliers, and external partners from briefing through delivery.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card coral-card">
-      <span>10</span>
-      <h2>Asset Development</h2>
-      <p>Graphic design, video editing, campaign collateral, visual storytelling, and production support.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card forest-card">
-      <span>11</span>
-      <h2>SOP Writing</h2>
-      <p>Turning informal workflows into repeatable, documented processes that improve consistency and quality.</p>
-      <a href="insights.html">Related insights →</a>
-    </article>    <article class="expertise-card yellow-card">
-      <span>12</span>
-      <h2>SEO / AEO / GEO Marketing & Strategy</h2>
-      <p>Search visibility across traditional search, answer engines, and generative AI discovery.</p>
+      <p>
+        Positioning, messaging, brand narrative, audience perception,
+        differentiation, and brand consistency.
+      </p>
       <a href="insights.html">Related insights →</a>
     </article>
+
+    <article class="expertise-card yellow-card">
+      <span>02</span>
+      <h2>SEO / AEO / GEO Marketing &amp; Strategy</h2>
+      <p>
+        Search visibility across traditional search, answer engines,
+        and generative AI discovery through research, content,
+        optimization, and technical strategy.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card forest-card">
+      <span>03</span>
+      <h2>Content Marketing</h2>
+      <p>
+        Using content to attract, educate, nurture, convert,
+        engage, and retain audiences.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card coral-card">
+      <span>04</span>
+      <h2>Channel Strategy</h2>
+      <p>
+        Choosing and coordinating channels based on audience behavior,
+        objectives, context, and desired outcomes.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card pink-card">
+      <span>05</span>
+      <h2>Lifecycle Marketing</h2>
+      <p>
+        Acquisition, onboarding, engagement, retention, reactivation,
+        and customer journey strategy across the marketing lifecycle.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card navy-card">
+      <span>06</span>
+      <h2>Public Relations &amp; Events</h2>
+      <p>
+        Public-facing communications, stakeholder engagement,
+        event strategy, media relations, and activation.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card mint-card">
+      <span>07</span>
+      <h2>Influencer &amp; Affiliate Marketing</h2>
+      <p>
+        Creator and partner selection, briefs, relationship management,
+        incentives, campaign coordination, and attribution.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card blue-card">
+      <span>08</span>
+      <h2>Social Media Marketing</h2>
+      <p>
+        Social strategy, platform planning, editorial calendars,
+        community engagement, short-form content, distribution,
+        and performance optimization across social channels.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card coral-card">
+      <span>09</span>
+      <h2>Content Development &amp; Strategy</h2>
+      <p>
+        Editorial systems, content architecture, voice, formats,
+        messaging frameworks, and production planning.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card forest-card">
+      <span>10</span>
+      <h2>Campaign &amp; Advocacy Development</h2>
+      <p>
+        Campaign architecture from problem definition through messaging,
+        creative development, stakeholder alignment, execution,
+        optimization, and measurement, including advocacy-led initiatives.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card pink-card">
+      <span>11</span>
+      <h2>Asset Development</h2>
+      <p>
+        Development of campaign collateral, social assets, visual storytelling,
+        graphic design, video editing, and production support across channels.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card slate-card">
+      <span>12</span>
+      <h2>SOP Writing</h2>
+      <p>
+        Turning informal workflows into repeatable, documented processes
+        that improve consistency, efficiency, accountability, and quality.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card yellow-card">
+      <span>13</span>
+      <h2>Performance Marketing</h2>
+      <p>
+        Data-informed campaign optimization across paid and organic channels,
+        with a focus on targeting, conversion, efficiency, testing,
+        attribution, and measurable business outcomes.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card navy-card">
+      <span>14</span>
+      <h2>Email &amp; SMS Marketing</h2>
+      <p>
+        Segmentation, campaign messaging, automation, nurture,
+        lifecycle communications, promotions, retention, and reactivation
+        across email and SMS channels.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
+    <article class="expertise-card mint-card">
+      <span>15</span>
+      <h2>Partnerships &amp; Collaboration</h2>
+      <p>
+        Working with agencies, vendors, suppliers, creators, and external
+        partners from briefing and scope alignment through coordination,
+        approvals, quality assurance, and delivery.
+      </p>
+      <a href="insights.html">Related insights →</a>
+    </article>
+
   </section>
 
   <section class="method-band">
@@ -107,7 +253,7 @@
 </main>
 <footer class="site-footer">
   <p>© <span id="year"></span> The Loom Room by Neri.</p>
-  <p>Marketing strategy, communication, and applied problem solving.</p>
+  <p>Marketing strategy, creative execution, and applied problem solving.</p>
 </footer>
 <script src="main.js"></script>
 
