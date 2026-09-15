@@ -135,6 +135,93 @@
       padding:10px 14px;
     }
   }
+
+  .insight-results-status{
+    margin:24px 0 0;
+    color:var(--slate, #6E7C87);
+    font-size:.92rem;
+    font-weight:600;
+  }
+
+  .insights-pagination{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:56px 0 12px;
+  }
+
+  .pagination-button,
+  .pagination-number{
+    appearance:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:44px;
+    min-height:44px;
+    padding:10px 14px;
+    border:1px solid var(--ink, #17171C);
+    border-radius:999px;
+    background:transparent;
+    color:var(--ink, #17171C);
+    font:inherit;
+    font-weight:700;
+    line-height:1;
+    cursor:pointer;
+    transition:background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+  }
+
+  .pagination-button:hover,
+  .pagination-number:hover,
+  .pagination-button:focus-visible,
+  .pagination-number:focus-visible{
+    border-color:var(--blue, #3155FF);
+    color:var(--blue, #3155FF);
+  }
+
+  .pagination-button:focus-visible,
+  .pagination-number:focus-visible{
+    outline:3px solid rgba(49,85,255,.22);
+    outline-offset:3px;
+  }
+
+  .pagination-number.is-current{
+    background:var(--blue, #3155FF);
+    border-color:var(--blue, #3155FF);
+    color:#fff;
+  }
+
+  .pagination-button:disabled{
+    opacity:.4;
+    cursor:not-allowed;
+    transform:none;
+  }
+
+  .pagination-ellipsis{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:28px;
+    min-height:44px;
+    color:var(--slate, #6E7C87);
+    font-weight:700;
+  }
+
+  @media(max-width:640px){
+    .insights-pagination{
+      gap:8px;
+      margin-top:40px;
+    }
+
+    .pagination-button,
+    .pagination-number{
+      min-width:40px;
+      min-height:40px;
+      padding:9px 12px;
+    }
+  }
+
 </style>
 
 </head>
@@ -183,6 +270,14 @@
   </p>
 
   <section class="insights-grid">
+    <a class="insight-card" href="insights/why-the-lead-is-not-the-conversion.html" data-categories="lifecycle channels campaigns operations">
+      <div class="insight-meta"><span>Lifecycle</span><span>Insight 05</span></div>
+      <h2>Why the lead is not the conversion</h2>
+      <p>A lifecycle framework for understanding what has to happen after someone raises their hand.</p>
+      <div class="insight-tags">Lifecycle Marketing, Email &amp; SMS Marketing, Performance Marketing</div>
+      <strong>Read insight →</strong>
+    </a>
+
     <a class="insight-card" href="insights/why-ranking-is-no-longer-the-whole-search-strategy.html" data-categories="search content channels">
       <div class="insight-meta"><span>Search</span><span>Insight 04</span></div>
       <h2>Why ranking is no longer the whole search strategy</h2>
@@ -211,6 +306,10 @@
       <strong>Read insight →</strong>
     </a>
   </section>
+
+  <p class="insight-results-status" id="insight-results-status" aria-live="polite"></p>
+
+  <nav class="insights-pagination" id="insights-pagination" aria-label="Insights pagination" hidden></nav>
 </main>
 <footer class="site-footer">
   <p>© <span id="year"></span> The Loom Room by Neri.</p>
@@ -219,40 +318,216 @@
 
 <script>
   (() => {
+    const ITEMS_PER_PAGE = 9;
+
     const filters = [...document.querySelectorAll(".insight-filter")];
     const cards = [...document.querySelectorAll(".insight-card")];
     const emptyState = document.getElementById("insight-filter-empty");
+    const status = document.getElementById("insight-results-status");
+    const pagination = document.getElementById("insights-pagination");
+    const filterRow = document.querySelector(".filter-row");
 
-    if (!filters.length || !cards.length) return;
+    if (!filters.length || !cards.length || !pagination) return;
 
-    const applyFilter = (filter) => {
-      let visibleCount = 0;
+    let currentFilter = "all";
+    let currentPage = 1;
+
+    const getMatchingCards = () => {
+      return cards.filter((card) => {
+        const categories = (card.dataset.categories || "")
+          .split(/\s+/)
+          .filter(Boolean);
+
+        return currentFilter === "all" || categories.includes(currentFilter);
+      });
+    };
+
+    const getTotalPages = (count) => Math.max(1, Math.ceil(count / ITEMS_PER_PAGE));
+
+    const updateUrl = () => {
+      const url = new URL(window.location.href);
+
+      if (currentFilter === "all") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", currentFilter);
+      }
+
+      if (currentPage === 1) {
+        url.searchParams.delete("page");
+      } else {
+        url.searchParams.set("page", String(currentPage));
+      }
+
+      history.replaceState(
+        { filter: currentFilter, page: currentPage },
+        "",
+        url
+      );
+    };
+
+    const makeButton = (label, className, disabled = false) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = className;
+      button.textContent = label;
+      button.disabled = disabled;
+      return button;
+    };
+
+    const buildPageSequence = (current, total) => {
+      if (total <= 7) {
+        return Array.from({ length: total }, (_, i) => i + 1);
+      }
+
+      const pages = new Set([1, total, current - 1, current, current + 1]);
+      const ordered = [...pages]
+        .filter((page) => page >= 1 && page <= total)
+        .sort((a, b) => a - b);
+
+      const sequence = [];
+
+      ordered.forEach((page, index) => {
+        if (index > 0 && page - ordered[index - 1] > 1) {
+          sequence.push("ellipsis");
+        }
+        sequence.push(page);
+      });
+
+      return sequence;
+    };
+
+    const renderPagination = (totalPages) => {
+      pagination.innerHTML = "";
+
+      if (totalPages <= 1) {
+        pagination.hidden = true;
+        return;
+      }
+
+      pagination.hidden = false;
+
+      const previous = makeButton("← Previous", "pagination-button", currentPage === 1);
+      previous.setAttribute("aria-label", "Previous insights page");
+      previous.addEventListener("click", () => {
+        if (currentPage <= 1) return;
+        currentPage -= 1;
+        render(true);
+      });
+      pagination.appendChild(previous);
+
+      buildPageSequence(currentPage, totalPages).forEach((item) => {
+        if (item === "ellipsis") {
+          const ellipsis = document.createElement("span");
+          ellipsis.className = "pagination-ellipsis";
+          ellipsis.textContent = "…";
+          ellipsis.setAttribute("aria-hidden", "true");
+          pagination.appendChild(ellipsis);
+          return;
+        }
+
+        const pageButton = makeButton(String(item), "pagination-number");
+        pageButton.setAttribute("aria-label", `Go to insights page ${item}`);
+
+        if (item === currentPage) {
+          pageButton.classList.add("is-current");
+          pageButton.setAttribute("aria-current", "page");
+        }
+
+        pageButton.addEventListener("click", () => {
+          if (item === currentPage) return;
+          currentPage = item;
+          render(true);
+        });
+
+        pagination.appendChild(pageButton);
+      });
+
+      const next = makeButton("Next →", "pagination-button", currentPage === totalPages);
+      next.setAttribute("aria-label", "Next insights page");
+      next.addEventListener("click", () => {
+        if (currentPage >= totalPages) return;
+        currentPage += 1;
+        render(true);
+      });
+      pagination.appendChild(next);
+    };
+
+    const render = (scrollToResults = false) => {
+      const matchingCards = getMatchingCards();
+      const totalPages = getTotalPages(matchingCards.length);
+
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      const visibleCards = new Set(matchingCards.slice(start, end));
 
       cards.forEach((card) => {
-        const categories = (card.dataset.categories || "").split(/\s+/).filter(Boolean);
-        const show = filter === "all" || categories.includes(filter);
-        card.hidden = !show;
-        if (show) visibleCount += 1;
+        card.hidden = !visibleCards.has(card);
       });
 
       filters.forEach((button) => {
-        const active = button.dataset.filter === filter;
+        const active = button.dataset.filter === currentFilter;
         button.classList.toggle("is-active", active);
         button.setAttribute("aria-pressed", String(active));
       });
 
       if (emptyState) {
-        emptyState.hidden = visibleCount !== 0;
+        emptyState.hidden = matchingCards.length !== 0;
+      }
+
+      if (status) {
+        if (!matchingCards.length) {
+          status.textContent = "";
+        } else {
+          const shownStart = start + 1;
+          const shownEnd = Math.min(end, matchingCards.length);
+          const categoryLabel =
+            currentFilter === "all"
+              ? "all Insights"
+              : `${currentFilter.replace(/-/g, " ")} Insights`;
+
+          status.textContent =
+            `Showing ${shownStart}–${shownEnd} of ${matchingCards.length} ${categoryLabel}.`;
+        }
+      }
+
+      renderPagination(totalPages);
+      updateUrl();
+
+      if (scrollToResults && filterRow) {
+        filterRow.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     };
 
     filters.forEach((button) => {
       button.addEventListener("click", () => {
-        applyFilter(button.dataset.filter || "all");
+        currentFilter = button.dataset.filter || "all";
+        currentPage = 1;
+        render(false);
       });
     });
 
-    applyFilter("all");
+    const loadFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const requestedFilter = params.get("category") || "all";
+      const validFilters = new Set(filters.map((button) => button.dataset.filter));
+
+      currentFilter = validFilters.has(requestedFilter) ? requestedFilter : "all";
+
+      const requestedPage = Number.parseInt(params.get("page") || "1", 10);
+      currentPage = Number.isFinite(requestedPage) && requestedPage > 0
+        ? requestedPage
+        : 1;
+
+      render(false);
+    };
+
+    window.addEventListener("popstate", loadFromUrl);
+
+    loadFromUrl();
   })();
 </script>
 
